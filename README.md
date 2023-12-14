@@ -1,0 +1,3 @@
+# intentIQ
+
+mvn clean install
