@@ -1,10 +1,14 @@
-package utils.propertiessupplier;
+package utils.propertiesmanager;
+
+import utils.propertiesmanager.suppliers.EnvironmentProperties;
+import utils.propertiesmanager.suppliers.FileProperties;
+import utils.propertiesmanager.suppliers.VmProperties;
 
 import java.util.List;
 
 public class ProjectProperties {
 
-    static List<Properties> properties = List.of(
+    static List<PropertiesSupplier> properties = List.of(
             new VmProperties(),
             new FileProperties("local"),
             new EnvironmentProperties(),

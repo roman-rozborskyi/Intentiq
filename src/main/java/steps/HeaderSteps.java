@@ -14,7 +14,7 @@ public class HeaderSteps {
         return this;
     }
 
-    public HeaderSteps proceedToCheckout() {
+    public HeaderSteps goToCheckout() {
         headerPageElement.clickOnCart();
         miniCartPageElement.clickOnProceedToCheckoutButton();
         return null;

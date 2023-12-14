@@ -1,6 +1,6 @@
 package utils.randomdatagenerators;
 
-public class AddressGenerator extends Generator{
+public class AddressGenerator extends AbstractRandomDataGenerator {
 
     public static String getStreet() {
         return AUTOMATION_PREFIX + faker.address().streetAddress();

@@ -6,7 +6,7 @@ import utils.drivermanager.driversuppliers.DriverSupplier;
 import utils.drivermanager.driversuppliers.ChromeSupplier;
 import utils.drivermanager.driversuppliers.EdgeSupplier;
 import utils.drivermanager.driversuppliers.FirefoxSupplier;
-import utils.propertiessupplier.ProjectProperties;
+import utils.propertiesmanager.ProjectProperties;
 
 
 public class DriverFactoryImpl implements DriverFactory {

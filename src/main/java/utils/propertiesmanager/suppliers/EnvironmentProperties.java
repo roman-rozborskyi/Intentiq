@@ -1,6 +1,8 @@
-package utils.propertiessupplier;
+package utils.propertiesmanager.suppliers;
 
-public class EnvironmentProperties implements Properties{
+import utils.propertiesmanager.PropertiesSupplier;
+
+public class EnvironmentProperties implements PropertiesSupplier {
     @Override
     public boolean isPropertyPresent(String propertyName) {
         return getProperty(propertyName) != null;

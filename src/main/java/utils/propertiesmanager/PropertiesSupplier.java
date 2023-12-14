@@ -1,6 +1,6 @@
-package utils.propertiessupplier;
+package utils.propertiesmanager;
 
-public interface Properties {
+public interface PropertiesSupplier {
     boolean isPropertyPresent(String propertyName);
 
     String getProperty(String propertyName);

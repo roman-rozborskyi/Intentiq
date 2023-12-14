@@ -1,6 +1,6 @@
 package utils.randomdatagenerators;
 
-public class NameGenerator extends Generator{
+public class NameGenerator extends AbstractRandomDataGenerator {
 
     public static String getFirstName() {
         String fullName = faker.name().firstName();

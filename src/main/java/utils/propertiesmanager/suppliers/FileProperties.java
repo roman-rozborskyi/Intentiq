@@ -1,9 +1,11 @@
-package utils.propertiessupplier;
+package utils.propertiesmanager.suppliers;
+
+import utils.propertiesmanager.PropertiesSupplier;
 
 import java.io.IOException;
 import java.io.InputStream;
 
-public class FileProperties implements Properties {
+public class FileProperties implements PropertiesSupplier {
     private final java.util.Properties PROPERTIES = new java.util.Properties();
     private boolean isFileExists;
 

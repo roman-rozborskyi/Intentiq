@@ -12,7 +12,7 @@ public class BuyingTest extends BaseTest{
 
         headerSteps.goToBagsSection();
         productsSectionSteps.addSecondProductToCart();
-        headerSteps.proceedToCheckout();
+        headerSteps.goToCheckout();
 
         shippingSteps.fillAllFields(shippingDataInserted);
         ShippingDataDto shippingDataSent = shippingSteps.goToNextPage();
