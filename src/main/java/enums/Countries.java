@@ -6,7 +6,7 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public enum Countries {
-    US("United States");
+    US("United States"), UKRAINE("Ukraine");
 
     private final String name;
 }

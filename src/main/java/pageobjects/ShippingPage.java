@@ -2,91 +2,84 @@ package pageobjects;
 
 import dto.ShippingDataDto;
 import enums.Countries;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.devtools.DevTools;
+import pageelements.dropdowns.Dropdown;
+import pageelements.dropdowns.DropdownRegular;
+import pageelements.inputs.Input;
+import pageelements.inputs.InputRegular;
 import utils.drivermanager.DevToolsService;
 import utils.drivermanager.DevToolsServiceChrome;
 
 public class ShippingPage extends PageObject {
-    private By emailInputLocator = By.xpath("//input[@name='username']");
-    private By firstNameInputLocator = By.xpath("//input[@name='firstname']");
-    private By lastNameInputLocator = By.xpath("//input[@name='lastname']");
-    private By companyInputLocator = By.xpath("//input[@name='company']");
-    private By streetInputLocator = By.xpath("//input[@name='street[0]']");
-    private By cityInputLocator = By.xpath("//input[@name='city']");
-    private By regionInputLocator = By.xpath("//input[@name='region']");
-    private By zipInputLocator = By.xpath("//input[@name='postcode']");
-    private By phoneInputLocator = By.xpath("//input[@name='telephone']");
+    private Input emailInput = InputRegular.initByInputName("username");
+    private Input firstNameInput = InputRegular.initByInputName("firstname");
+    private Input lastNameInput = InputRegular.initByInputName("lastname");
+    private Input companylInput = InputRegular.initByInputName("company");
+    private Input streetInput = InputRegular.initByInputName("street[0]");
+    private Input cityInput = InputRegular.initByInputName("city");
+    private Input zipInput = InputRegular.initByInputName("postcode");
+    private Input phoneInput = InputRegular.initByInputName("telephone");
+    private Input regionInput = InputRegular.initByInputName("region");
+    private Dropdown countryDropdown = DropdownRegular.initBySelectName("country_id");
 
     public ShippingPage fillEmailInput(ShippingDataDto shippingAddress) {
         String email = shippingAddress.getEMail();
-        WebElement input = webDriver.findElement(emailInputLocator);
-        input.sendKeys(email);
+        emailInput.fill(email);
         return this;
     }
 
     public ShippingPage fillFirstNameInput(ShippingDataDto shippingAddress) {
         String firstName = shippingAddress.getFirstName();
-        WebElement input = webDriver.findElement(emailInputLocator);
-        input.sendKeys(firstName);
+        firstNameInput.fill(firstName);
         return this;
     }
 
     public ShippingPage fillLastNameInput(ShippingDataDto shippingAddress) {
         String lastName = shippingAddress.getLastName();
-        WebElement input = webDriver.findElement(emailInputLocator);
-        input.sendKeys(lastName);
+        lastNameInput.fill(lastName);
         return this;
     }
 
     public ShippingPage fillCompanyInput(ShippingDataDto shippingAddress) {
         String company = shippingAddress.getCompany();
-        WebElement input = webDriver.findElement(emailInputLocator);
-        input.sendKeys(company);
+        companylInput.fill(company);
         return this;
     }
 
     public ShippingPage fillStreetAddressInput(ShippingDataDto shippingAddress) {
         String address = shippingAddress.getStreetAddress();
-        WebElement input = webDriver.findElement(emailInputLocator);
-        input.sendKeys(address);
+        streetInput.fill(address);
         return this;
     }
 
     public ShippingPage fillCityInput(ShippingDataDto shippingAddress) {
         String city = shippingAddress.getCity();
-        WebElement input = webDriver.findElement(emailInputLocator);
-        input.sendKeys(city);
+        cityInput.fill(city);
         return this;
     }
 
     public ShippingPage fillStateInput(ShippingDataDto shippingAddress) {
         String state = shippingAddress.getRegion();
-        WebElement input = webDriver.findElement(emailInputLocator);
-        input.sendKeys(state);
+        regionInput.fill(state);
         return this;
     }
 
     public ShippingPage fillZipInput(ShippingDataDto shippingAddress) {
         String zip = shippingAddress.getZip();
-        WebElement input = webDriver.findElement(emailInputLocator);
-        input.sendKeys(zip);
+        zipInput.fill(zip);
         return this;
     }
 
     public ShippingPage selectCountry(ShippingDataDto shippingAddress) {
         Countries country = shippingAddress.getCountry();
-        WebElement input = webDriver.findElement(emailInputLocator);
-        input.sendKeys(country);
+        countryDropdown.openAndSelect(country.getName());
         return this;
     }
 
     public ShippingPage fillPhoneNumberInput(ShippingDataDto shippingAddress) {
         String phone = shippingAddress.getPhoneNumber();
-        WebElement input = webDriver.findElement(emailInputLocator);
-        input.sendKeys(phone);
+        phoneInput.fill(phone);
         return this;
     }
 
