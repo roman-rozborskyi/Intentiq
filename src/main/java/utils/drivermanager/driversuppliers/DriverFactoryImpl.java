@@ -1,11 +1,8 @@
-package utils.drivermanager;
+package utils.drivermanager.driversuppliers;
 
 import enums.Browsers;
 import org.openqa.selenium.WebDriver;
-import utils.drivermanager.driversuppliers.DriverSupplier;
-import utils.drivermanager.driversuppliers.ChromeSupplier;
-import utils.drivermanager.driversuppliers.EdgeSupplier;
-import utils.drivermanager.driversuppliers.FirefoxSupplier;
+import utils.drivermanager.DriverFactory;
 import utils.propertiesmanager.ProjectProperties;
 
 

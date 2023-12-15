@@ -1,12 +1,16 @@
 package steps;
 
-import pageelements.OrderInfoPageElement;
+import pageobjects.OrderInfoPage;
+import utils.fileservice.FileWriter;
+import utils.fileservice.FileWriterImpl;
 
 public class OrderInfoSteps {
-    private OrderInfoPageElement orderInfoPageElement = new OrderInfoPageElement();
+    private OrderInfoPage orderInfoPage = new OrderInfoPage();
 
     public OrderInfoSteps writeOrderIdToFile() {
-        String orderId = orderInfoPageElement.getOrderId();
+        String orderId = orderInfoPage.getOrderId();
+        FileWriter fileWriter = new FileWriterImpl();
+        fileWriter.write(orderId);
 
         return this;
     }

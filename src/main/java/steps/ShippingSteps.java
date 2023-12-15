@@ -1,18 +1,33 @@
 package steps;
 
 import dto.ShippingDataDto;
-import pageelements.ShippingPageElement;
+import pageobjects.ShippingPage;
 
 public class ShippingSteps {
-    private ShippingPageElement shippingPageElement = new ShippingPageElement();
+    private ShippingPage shippingPage = new ShippingPage();
 
-    public ShippingSteps fillAllFields(ShippingDataDto shippingAddress) {
-        shippingPageElement
-        return this;
+    /**
+     * Ukraine is selected from the "Country" list
+     * all other fields filled with random values
+     */
+    public ShippingDataDto fillAllFieldsUkraine() {
+        ShippingDataDto shippingAddress = ShippingDataDto.getDirector().getInstanceRandomValuesUkraine();
+
+         shippingPage
+                 .selectCountry(shippingAddress)
+                 .fillEmailInput(shippingAddress)
+                 .fillFirstNameInput(shippingAddress)
+                 .fillLastNameInput(shippingAddress)
+                 .fillCompanyInput(shippingAddress)
+                 .fillStreetAddressInput(shippingAddress)
+                 .fillCityInput(shippingAddress)
+                 .fillStateInput(shippingAddress)
+                 .fillZipInput(shippingAddress)
+                 .fillPhoneNumberInput(shippingAddress);
+        return shippingAddress;
     }
 
     public ShippingDataDto goToNextPage() {
-
-        return new ShippingDataDto();
+        return shippingPage.clickNextButton();
     }
 }

@@ -2,6 +2,7 @@ package steps;
 
 import pageelements.header.HeaderPageElement;
 import pageelements.header.MiniCartPageElement;
+import pageelements.header.sections.subsections.GearSubsections;
 import pageelements.header.sections.HeaderMenuSections;
 
 public class HeaderSteps {
@@ -9,8 +10,8 @@ public class HeaderSteps {
     private MiniCartPageElement miniCartPageElement = new MiniCartPageElement();
 
     public HeaderSteps goToBagsSection() {
-        headerPageElement.openSubSectionsMenu(HeaderMenuSections.GEAR);
-        headerPageElement.selectSubSection(HeaderMenuSections.GEAR.getSubsections());
+        headerPageElement.openSubSectionsMenu(HeaderMenuSections.WHATS_NEW);
+        headerPageElement.selectSubSection(GearSubsections.BAGS);
         return this;
     }
 

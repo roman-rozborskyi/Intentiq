@@ -1,12 +1,12 @@
 package steps;
 
-import pageelements.ReviewandPaymentPageElement;
+import pageobjects.ReviewAndPaymentPage;
 
 public class ReviewAndPaymentsSteps {
-    private ReviewandPaymentPageElement reviewandPaymentPageElement = new ReviewandPaymentPageElement();
+    private ReviewAndPaymentPage reviewandPaymentPage = new ReviewAndPaymentPage();
 
     public ReviewAndPaymentsSteps placeOrder() {
-        reviewandPaymentPageElement.clickOnPlaceOrder();
+        reviewandPaymentPage.clickOnPlaceOrderButton();
         return this;
     }
 }

@@ -3,8 +3,9 @@ package dto;
 import enums.Countries;
 import enums.ShippingMethods;
 import lombok.Builder;
-import utils.randomdatagenerators.*;
+import lombok.Getter;
 
+@Getter
 @Builder
 public class ShippingDataDto {
     private String eMail;
@@ -19,20 +20,7 @@ public class ShippingDataDto {
     private String phoneNumber;
     private ShippingMethods shippingMethod;
 
-    public static ShippingDataDto getInstanceRandomValues() {
-
-        return ShippingDataDto
-                .builder()
-                .eMail(EmailGenerator.getEmail())
-                .firstName(NameGenerator.getFirstName())
-                .lastName(NameGenerator.getLastName())
-                .company(CompanyNameGenerator.getName())
-                .streetAddress(AddressGenerator.getStreet())
-                .city(AddressGenerator.getCity())
-                .region(AddressGenerator.getRegion())
-                .zip(AddressGenerator.getZip())
-                .country(Countries.US)
-                .phoneNumber(PhoneNumberGenerator.getNumber())
-                .shippingMethod(CompanyNameGenerator.getName());
+    public static ShippingDataDirector getDirector() {
+        return new ShippingDataDirector();
     }
 }

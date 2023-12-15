@@ -1,8 +1,7 @@
-package utils;
+package utils.drivermanager;
 
 import org.openqa.selenium.WebDriver;
-import utils.drivermanager.DriverFactory;
-import utils.drivermanager.DriverFactoryImpl;
+import utils.drivermanager.driversuppliers.DriverFactoryImpl;
 
 public class DriverManager {
     private static DriverManager instance;

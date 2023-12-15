@@ -1,9 +1,9 @@
-package pageelements;
+package pageobjects;
 
 import org.openqa.selenium.WebDriver;
 import utils.drivermanager.DriverManager;
 
-public abstract class PageElement {
+public abstract class PageObject {
     protected WebDriver webDriver;
 
     {

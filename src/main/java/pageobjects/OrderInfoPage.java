@@ -1,9 +1,9 @@
-package pageelements;
+package pageobjects;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
-public class OrderInfoPageElement extends PageElement {
+public class OrderInfoPage extends PageObject {
     private String orderIdXpath = "";
 
     public String getOrderId() {

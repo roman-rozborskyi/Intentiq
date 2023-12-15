@@ -4,7 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import steps.*;
-import utils.DriverManager;
+import utils.drivermanager.DriverManager;
 import utils.propertiesmanager.ProjectProperties;
 
 public class BaseTest {
