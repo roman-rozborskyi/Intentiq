@@ -10,7 +10,7 @@ public enum GearSubsections implements HeaderMenuSubsections {
     private String subsection;
 
     @Override
-    public String getSubsection() {
+    public String getName() {
         return subsection;
     }
 }

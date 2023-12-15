@@ -9,5 +9,5 @@ public enum HeaderMenuSections {
     WHATS_NEW("What's New"), WOMEN("Women"), MEN("Men"),
     GEAR("Gear"), TRAINING("Training"), SALE("Sale");
 
-    private String sectionName;
+    private String name;
 }

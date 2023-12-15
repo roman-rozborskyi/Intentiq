@@ -1,6 +1,7 @@
 package dto;
 
 import enums.Countries;
+import enums.ShippingMethods;
 import utils.randomdatagenerators.*;
 
 public class ShippingDataDirector {
@@ -17,6 +18,7 @@ public class ShippingDataDirector {
                 .zip(AddressGenerator.getZip())
                 .country(Countries.US)
                 .phoneNumber(PhoneNumberGenerator.getNumber())
-                .shippingMethod(CompanyNameGenerator.getName());
+                .shippingMethod(ShippingMethods.FIVE)
+                .build();
     }
 }

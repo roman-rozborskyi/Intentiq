@@ -10,9 +10,9 @@ public class ProjectProperties {
 
     static List<PropertiesSupplier> properties = List.of(
             new VmProperties(),
-            new FileProperties("local"),
-            new EnvironmentProperties(),
-            new FileProperties("general"));
+            new FileProperties("ui"),
+            new EnvironmentProperties()
+    );
 
     public static String getProperty(String propertyName) {
         return properties.stream()

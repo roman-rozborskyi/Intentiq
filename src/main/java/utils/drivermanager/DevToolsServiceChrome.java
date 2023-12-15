@@ -18,6 +18,6 @@ public class DevToolsServiceChrome implements DevToolsService{
     }
 
     public void getRequest(Consumer consumer) {
-        devTools.addListener();
+//        devTools.addListener();
     }
 }

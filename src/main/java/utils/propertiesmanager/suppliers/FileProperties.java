@@ -2,6 +2,7 @@ package utils.propertiesmanager.suppliers;
 
 import utils.propertiesmanager.PropertiesSupplier;
 
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -10,9 +11,9 @@ public class FileProperties implements PropertiesSupplier {
     private boolean isFileExists;
 
     public FileProperties(String fileName) {
-        String filePath = String.format("%s.properties",  fileName);
+        String filePath = "./src/main/resources/ui.properties";
 
-        try (InputStream inputStream = getClass().getResourceAsStream(filePath)) {
+        try (InputStream inputStream = new FileInputStream(filePath)) {
             PROPERTIES.load(inputStream);
             isFileExists = true;
         } catch (NullPointerException | IOException e) {
