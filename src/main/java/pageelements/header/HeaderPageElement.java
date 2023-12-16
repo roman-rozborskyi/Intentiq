@@ -5,29 +5,43 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import pageelements.PageElement;
 import pageelements.header.sections.HeaderMenuSections;
+import pageelements.header.sections.subsections.GearSubsections;
+import utils.Waiter;
+
+import java.time.Duration;
 
 public class HeaderPageElement extends PageElement {
     private String sectionsMenuXpath = "//div[contains(@class, 'section-item-content')]";
     private String sectionItemXpath = ".//li[.//span[text()=\"%s\"]]";
     private String subSectionItemXpath = ".//li[.//span[text()=\"%s\"]]";
 
-    public HeaderPageElement openSubSectionsMenu(HeaderMenuSections section) {
-        String sectionItemFullXpath = String.format(sectionItemXpath, section.getName());
-        WebElement sectionElement =
-                webDriver
-                        .findElement(By.xpath(sectionsMenuXpath))
-                        .findElement(By.xpath(sectionItemFullXpath));
+    public HeaderPageElement goToSection(HeaderMenuSections section, GearSubsections subsection) {
+        WebElement sectionElement = getSectionWebElement(section);
+        openSubSectionsMenu(sectionElement);
+        selectSubSection(sectionElement, subsection);
+        return null;
+    }
+
+    public HeaderPageElement openSubSectionsMenu(WebElement sectionElement) {
         new Actions(webDriver)
                 .moveToElement(sectionElement)
+                .pause(Duration.ofMillis(500))
                 .perform();
         return null;
     }
 
-    public HeaderPageElement selectSubSection(HeaderMenuSubsections subsection) {
-        String subSectionItemFullXpath = String.format(subSectionItemXpath, subsection.getName());
-        WebElement subSectionElement = webDriver
-                .findElement(By.xpath(sectionsMenuXpath))
-                .findElement(By.xpath(subSectionItemFullXpath));
+    private WebElement getSectionWebElement(HeaderMenuSections section) {
+        String sectionItemFullXpath = String.format(sectionItemXpath, section.getName());
+        By sectionItemLocator = By.xpath(sectionsMenuXpath);
+        isElementReady(sectionItemLocator);
+        return webDriver
+                .findElement(sectionItemLocator)
+                .findElement(By.xpath(sectionItemFullXpath));
+    }
+
+    public HeaderPageElement selectSubSection(WebElement sectionElement, HeaderMenuSubsections subsection) {
+        String sectionItemFullXpath = String.format(subSectionItemXpath, subsection.getName());
+        WebElement subSectionElement = sectionElement.findElement(By.xpath(sectionItemFullXpath));
         subSectionElement.click();
         return null;
     }
@@ -36,5 +50,12 @@ public class HeaderPageElement extends PageElement {
         WebElement miniCart = webDriver.findElement(By.className("minicart-wrapper"));
         miniCart.click();
         return null;
+    }
+
+    private HeaderPageElement isElementReady(By locator) {
+        new Waiter()
+                .waitVisibility(locator)
+                .wait(250);
+        return this;
     }
 }

@@ -9,7 +9,9 @@ public class ProductsSectionSteps {
      * clicks on button "Add to cart" in the second product in the first row
      */
     public ProductsSectionSteps addSecondProductToCart() {
-        sectionContentPage.addSecondProductToCart();
+        sectionContentPage
+                .waitUntilPageReady()
+                .addSecondProductToCart();
         return this;
     }
 }

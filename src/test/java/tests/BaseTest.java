@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import steps.*;
+import utils.Waiter;
 import utils.drivermanager.DriverManager;
 import utils.propertiesmanager.ProjectProperties;
 
@@ -21,6 +22,7 @@ public class BaseTest {
         String url = ProjectProperties.getProperty("baseUrl");
         driver.get(url);
         initSteps();
+        waitPageLoaded();
     }
 
     @AfterMethod(alwaysRun = true)
@@ -34,5 +36,11 @@ public class BaseTest {
         shippingSteps = new ShippingSteps();
         reviewAndPaymentsSteps = new ReviewAndPaymentsSteps();
         orderInfoSteps = new OrderInfoSteps();
+    }
+
+    private static void waitPageLoaded() {
+        new Waiter()
+                .waitDocumentReady()
+                .wait(500);
     }
 }
