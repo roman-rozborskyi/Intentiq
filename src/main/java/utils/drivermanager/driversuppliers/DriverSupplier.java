@@ -5,11 +5,14 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.time.Duration;
+
 public abstract class DriverSupplier {
     private static final Logger LOGGER = LoggerFactory.getLogger(DriverSupplier.class);
 
     protected void adjustDriver(WebDriver webDriver) {
         webDriver.manage().window().maximize();
+        webDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
     }
 
     protected void logDriverInfo(WebDriver webDriver, ChromeOptions options) {

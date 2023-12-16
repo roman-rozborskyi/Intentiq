@@ -1,4 +1,4 @@
-package pageelements;
+package pageobjects;
 
 import lombok.Getter;
 import org.openqa.selenium.By;
@@ -6,10 +6,10 @@ import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
-public class SectionContentPageElement extends PageElement {
+public class SectionContentPage extends PageObject {
     private String productContainerXpath = "//li[@class='item product product-item']";
 
-    public SectionContentPageElement addSecondProductToCart() {
+    public SectionContentPage addSecondProductToCart() {
         getSecondProduct()
                 .hoverImage()
                 .clickAddToCartButton();

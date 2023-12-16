@@ -18,7 +18,7 @@ public class HeaderPageElement extends PageElement {
                         .findElement(By.xpath(sectionsMenuXpath))
                         .findElement(By.xpath(sectionItemFullXpath));
         new Actions(webDriver)
-                .scrollToElement(sectionElement)
+                .moveToElement(sectionElement)
                 .perform();
         return null;
     }

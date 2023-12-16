@@ -10,7 +10,7 @@ public class HeaderSteps {
     private MiniCartPageElement miniCartPageElement = new MiniCartPageElement();
 
     public HeaderSteps goToBagsSection() {
-        headerPageElement.openSubSectionsMenu(HeaderMenuSections.WHATS_NEW);
+        headerPageElement.openSubSectionsMenu(HeaderMenuSections.GEAR);
         headerPageElement.selectSubSection(GearSubsections.BAGS);
         return this;
     }

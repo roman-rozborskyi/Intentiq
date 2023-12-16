@@ -1,15 +1,15 @@
 package steps;
 
-import pageelements.SectionContentPageElement;
+import pageobjects.SectionContentPage;
 
 public class ProductsSectionSteps {
-    private SectionContentPageElement sectionContentPageElement = new SectionContentPageElement();
+    private SectionContentPage sectionContentPage = new SectionContentPage();
 
     /**
      * clicks on button "Add to cart" in the second product in the first row
      */
     public ProductsSectionSteps addSecondProductToCart() {
-        sectionContentPageElement.addSecondProductToCart();
+        sectionContentPage.addSecondProductToCart();
         return this;
     }
 }
