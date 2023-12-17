@@ -14,6 +14,7 @@ public class ShippingSteps {
         ShippingDataDto shippingAddress = ShippingDataDto.getDirector().getInstanceRandomValuesUkraine();
 
          shippingPage
+                 .waitPageReady()
                  .selectCountry(shippingAddress)
                  .fillEmailInput(shippingAddress)
                  .fillFirstNameInput(shippingAddress)

@@ -2,19 +2,23 @@ package pageobjects;
 
 import dto.ShippingDataDto;
 import enums.Countries;
+import org.openqa.selenium.By;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.devtools.DevTools;
 import pageelements.dropdowns.DropdownRegular;
 import pageelements.inputs.InputRegular;
+import utils.Waiter;
 import utils.drivermanager.DevToolsService;
 import utils.drivermanager.DevToolsServiceChrome;
 
 public class ShippingPage extends PageObject {
+    private static final By SPINNER_LOCATOR = By.id("checkout-loader");
+    private static final String EMAIL_INPUT_NAME = "username";
 
     public ShippingPage fillEmailInput(ShippingDataDto shippingAddress) {
         String email = shippingAddress.getEMail();
         InputRegular
-                .initByInputName("username")
+                .initByInputName(EMAIL_INPUT_NAME)
                 .fill(email);
         return this;
     }
@@ -111,5 +115,16 @@ public class ShippingPage extends PageObject {
                 .country(Countries.US)
                 .phoneNumber("")
                 .build();
+    }
+
+    public ShippingPage waitPageReady() {
+        new Waiter()
+                .waitVisibility(SPINNER_LOCATOR)
+                .waitInvisibility(SPINNER_LOCATOR)
+                .wait(250);
+        InputRegular
+                .initByInputName(EMAIL_INPUT_NAME)
+                .waitVisibility();
+        return this;
     }
 }

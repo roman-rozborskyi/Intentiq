@@ -16,7 +16,7 @@ public class ShippingDataDirector {
                 .city(AddressGenerator.getCity())
                 .region(AddressGenerator.getRegion())
                 .zip(AddressGenerator.getZip())
-                .country(Countries.US)
+                .country(Countries.UKRAINE)
                 .phoneNumber(PhoneNumberGenerator.getNumber())
                 .shippingMethod(ShippingMethods.FIVE)
                 .build();

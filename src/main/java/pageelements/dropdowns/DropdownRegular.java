@@ -8,8 +8,8 @@ import pageelements.PageElement;
 import java.util.List;
 
 public class DropdownRegular extends PageElement implements Dropdown {
-    private static final String SELECT_CONTAINER_XPATH = "//div[.//select[@%s=\"%s\" and @class='input-text'] and contains(@class, 'field')]";
-    private static final String INPUT_XPATH = ".//select";
+    private static final String SELECT_CONTAINER_XPATH = "//select[@class='select' and @%s=\"%s\"]/ancestor::div[contains(@class, 'field')][1]";
+    private static final String INTERACTABLE_WEBELEMENT_XPATH = ".//div[@class='control']";
     private static final String OPTION_XPATH = ".//option[text()=\"%s\"]";
     private WebElement dropdownContainer;
 
@@ -30,14 +30,14 @@ public class DropdownRegular extends PageElement implements Dropdown {
     }
 
     public DropdownRegular open() {
-        List<WebElement> inputs = dropdownContainer.findElements(By.xpath(INPUT_XPATH));
-        WebElement input =
+        List<WebElement> inputs = dropdownContainer.findElements(By.xpath(INTERACTABLE_WEBELEMENT_XPATH));
+        WebElement interactableWebElement =
                 inputs
                         .stream()
                         .filter(WebElement::isDisplayed)
                         .findFirst()
                         .orElseThrow(() -> new RuntimeException("Dropdown isn't displayed on the page"));
-        input.click();
+        interactableWebElement.click();
         return this;
     }
 
