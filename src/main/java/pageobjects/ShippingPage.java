@@ -95,16 +95,11 @@ public class ShippingPage extends PageObject {
         return this;
     }
 
-    public ShippingDataDto clickNextButton() {
-        DevToolsServiceChrome devToolsServiceChrome = new DevToolsServiceChrome();
-        devToolsServiceChrome.createSession();
-        devToolsServiceChrome.requestToObject();
-
+    public ShippingPage clickNextButton() {
         new Waiter().waitClickable(NEXT_BUTTON_LOCATOR);
         WebElement button = webDriver.findElement(NEXT_BUTTON_LOCATOR);
         button.click();
-
-        return (ShippingDataDto) devToolsServiceChrome.requestToObject();
+        return this;
     }
 
     public ShippingPage waitPageReady() {

@@ -3,12 +3,13 @@ package dtos;
 import enums.Countries;
 import enums.ShippingMethods;
 import lombok.Builder;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
-import utils.drivermanager.CheckableInRequest;
 
 @Getter
 @Builder
-public class ShippingDataDto implements CheckableInRequest {
+@EqualsAndHashCode
+public class ShippingDataDto {
     private String eMail;
     private String firstName;
     private String lastName;

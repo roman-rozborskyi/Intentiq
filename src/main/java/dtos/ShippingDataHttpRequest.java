@@ -10,11 +10,16 @@ import java.util.List;
 @Getter
 @Setter
 public class ShippingDataHttpRequest {
-    private ShippingAddress shippingAddress;
-    private BillingAddress billingAddress;
-    private String shippingMethodCode;
-    private String shippingCarrierCode;
-    private ExtensionAttributes extensionAttributes;
+    private AddressInformation addressInformation;
+    @Getter
+    @Setter
+    public class AddressInformation {
+        private ShippingAddress shippingAddress;
+        private BillingAddress billingAddress;
+        private String shippingMethodCode;
+        private String shippingCarrierCode;
+        private ExtensionAttributes extensionAttributes;
+    }
 
     @Getter
     @Setter

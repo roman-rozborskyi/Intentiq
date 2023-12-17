@@ -2,6 +2,7 @@ package utils.drivermanager;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import dtos.ShippingDataDirector;
 import dtos.ShippingDataDto;
 import dtos.ShippingDataHttpRequest;
 import org.openqa.selenium.WebDriver;
@@ -32,7 +33,7 @@ public class DevToolsServiceChrome implements DevToolsService{
         devTools.close();
     }
 
-    public CheckableInRequest requestToObject() {
+    public ShippingDataDto requestToShippingData() {
         AtomicReference<ShippingDataDto> shippingDataDto = new AtomicReference<>();
         devTools.send(Network.enable(Optional.empty(), Optional.empty(), Optional.empty()));
         devTools.addListener(Network.requestWillBeSent(), requestConsumer -> {
@@ -42,7 +43,7 @@ public class DevToolsServiceChrome implements DevToolsService{
                 Gson gson = new GsonBuilder().create();
                 ShippingDataHttpRequest p = gson.fromJson(sentData, ShippingDataHttpRequest.class);
 
-                ShippingDataDto shippingDataDto1 = ShippingDataDto.builder().build();
+                ShippingDataDto shippingDataDto1 = new ShippingDataDirector().getInstance(p);
                 shippingDataDto.set(shippingDataDto1);
             }
         });

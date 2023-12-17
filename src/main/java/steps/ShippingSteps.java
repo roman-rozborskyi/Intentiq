@@ -1,12 +1,8 @@
 package steps;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import dtos.ShippingDataDirector;
 import dtos.ShippingDataDto;
-import dtos.ShippingDataHttpRequest;
-import org.openqa.selenium.devtools.v120.network.model.Request;
 import pageobjects.ShippingPage;
+import utils.drivermanager.DevToolsServiceChrome;
 
 public class ShippingSteps {
     private ShippingPage shippingPage = new ShippingPage();
@@ -34,12 +30,11 @@ public class ShippingSteps {
     }
 
     public ShippingDataDto goToNextPage() {
-//        Request request = shippingPage.clickNextButton();
-shippingPage.clickNextButton();
-//        String sentData = request.getPostData().orElseThrow(() -> new RuntimeException("Impossible to get request from the HTTP"));
-        Gson gson = new GsonBuilder().create();
-//        ShippingDataHttpRequest shippingDataHttpRequest = gson.fromJson(sentData, ShippingDataHttpRequest.class);
-        ShippingDataDto shippingDataDto = new ShippingDataDirector().getInstanceRandomValuesUkraine();
-        return shippingDataDto;
+        DevToolsServiceChrome devToolsServiceChrome = new DevToolsServiceChrome();
+        devToolsServiceChrome.createSession();
+        devToolsServiceChrome.requestToShippingData();
+
+        shippingPage.clickNextButton();
+        return devToolsServiceChrome.requestToShippingData();
     }
 }
