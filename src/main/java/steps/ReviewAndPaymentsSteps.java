@@ -6,7 +6,9 @@ public class ReviewAndPaymentsSteps {
     private ReviewAndPaymentPage reviewandPaymentPage = new ReviewAndPaymentPage();
 
     public ReviewAndPaymentsSteps placeOrder() {
-        reviewandPaymentPage.clickOnPlaceOrderButton();
+        reviewandPaymentPage
+                .waitPageReady()
+                .clickOnPlaceOrderButton();
         return this;
     }
 }

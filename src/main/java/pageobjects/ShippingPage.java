@@ -1,10 +1,12 @@
 package pageobjects;
 
-import dto.ShippingDataDto;
+import dtos.ShippingDataDto;
 import enums.Countries;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.devtools.DevTools;
+import pageelements.LoadingMaskElement;
 import pageelements.dropdowns.DropdownRegular;
 import pageelements.inputs.InputRegular;
 import utils.Waiter;
@@ -13,6 +15,7 @@ import utils.drivermanager.DevToolsServiceChrome;
 
 public class ShippingPage extends PageObject {
     private static final By SPINNER_LOCATOR = By.id("checkout-loader");
+    private static final By NEXT_BUTTON_LOCATOR = By.xpath("//button[.//span[text()='Next']]");
     private static final String EMAIL_INPUT_NAME = "username";
 
     public ShippingPage fillEmailInput(ShippingDataDto shippingAddress) {
@@ -76,14 +79,14 @@ public class ShippingPage extends PageObject {
         InputRegular
                 .initByInputName("postcode")
                 .fill(zip);
+        new LoadingMaskElement().waitLoading();
         return this;
     }
 
     public ShippingPage selectCountry(ShippingDataDto shippingAddress) {
         Countries country = shippingAddress.getCountry();
-        DropdownRegular
-                .initBySelectName("country_id")
-                .openAndSelect(country.getName());
+        new DropdownRegular("country_id")
+                .select(country.getName());
         return this;
     }
 
@@ -96,6 +99,11 @@ public class ShippingPage extends PageObject {
     }
 
     public ShippingDataDto clickNextButton() {
+        new Waiter().waitClickable(NEXT_BUTTON_LOCATOR);
+        WebElement button = webDriver.findElement(NEXT_BUTTON_LOCATOR);
+        button.click();
+
+
         DevToolsService devToolsService = new DevToolsServiceChrome();
         ChromeDriver driver = (ChromeDriver) webDriver;
         DevTools devTools = driver.getDevTools();

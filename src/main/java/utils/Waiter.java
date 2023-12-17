@@ -11,7 +11,7 @@ import utils.drivermanager.DriverManager;
 import java.time.Duration;
 
 public class Waiter {
-    private static final int DEFAULT_WAIT_TIME = 10;
+    private static final int DEFAULT_WAIT_TIME = 20;
     private WebDriver webDriver;
 
     {
@@ -34,6 +34,12 @@ public class Waiter {
     public Waiter waitInvisibility(By locator) {
         WebDriverWait wait = new WebDriverWait(webDriver, Duration.ofSeconds(DEFAULT_WAIT_TIME));
         wait.until(ExpectedConditions.invisibilityOfElementLocated(locator));
+        return this;
+    }
+
+    public Waiter waitClickable(By locator) {
+        WebDriverWait wait = new WebDriverWait(webDriver, Duration.ofSeconds(DEFAULT_WAIT_TIME));
+        wait.until(ExpectedConditions.elementToBeClickable(locator));
         return this;
     }
 

@@ -1,6 +1,6 @@
 package steps;
 
-import dto.ShippingDataDto;
+import dtos.ShippingDataDto;
 import pageobjects.ShippingPage;
 
 public class ShippingSteps {
@@ -23,9 +23,9 @@ public class ShippingSteps {
                  .fillStreetAddressInput(shippingAddress)
                  .fillCityInput(shippingAddress)
                  .fillStateInput(shippingAddress)
-                 .fillZipInput(shippingAddress)
-                 .fillPhoneNumberInput(shippingAddress);
-        return shippingAddress;
+                 .fillPhoneNumberInput(shippingAddress)
+                 .fillZipInput(shippingAddress);
+         return shippingAddress;
     }
 
     public ShippingDataDto goToNextPage() {

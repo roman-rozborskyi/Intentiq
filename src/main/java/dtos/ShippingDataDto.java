@@ -1,4 +1,4 @@
-package dto;
+package dtos;
 
 import enums.Countries;
 import enums.ShippingMethods;

@@ -15,6 +15,6 @@ public class AddressGenerator extends AbstractRandomDataGenerator {
     }
 
     public static String getZip() {
-        return faker.address().zipCode();
+        return faker.number().digits(5);
     }
 }

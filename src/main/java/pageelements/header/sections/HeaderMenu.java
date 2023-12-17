@@ -11,8 +11,8 @@ import utils.Waiter;
 import java.time.Duration;
 
 public class HeaderMenu extends PageElement {
-    private static final By SECTIONS_MENU_XPATH = By.xpath("//div[contains(@class, 'section-item-content')]");
-    private static final By SECTION_ARROW_XPATH = By.xpath(".//span[contains(@class, 'ui-menu-icon')]");
+    private static final By SECTIONS_MENU_LOCATOR = By.xpath("//div[contains(@class, 'section-item-content')]");
+    private static final By SECTION_ARROW_LOCATOR = By.xpath(".//span[contains(@class, 'ui-menu-icon')]");
     private static final String SECTION_ITEM_XPATH = ".//li[.//span[text()=\"%s\"]]";
     private static final String SUB_SECTION_ITEM_XPATH = ".//li[.//span[text()=\"%s\"]]";
 
@@ -33,7 +33,7 @@ public class HeaderMenu extends PageElement {
     private WebElement getSectionWebElement(HeaderMenuSections section) {
         String sectionItemFullXpath = String.format(SECTION_ITEM_XPATH, section.getName());
         return webDriver
-                .findElement(SECTIONS_MENU_XPATH)
+                .findElement(SECTIONS_MENU_LOCATOR)
                 .findElement(By.xpath(sectionItemFullXpath));
     }
 
@@ -44,7 +44,8 @@ public class HeaderMenu extends PageElement {
     }
 
     private void isMenuReady(WebElement sectionElement) {
-        WebElement arrow = sectionElement.findElement(SECTION_ARROW_XPATH);
-        new Waiter().waitVisibility(arrow);
+        new Waiter()
+                .waitVisibility(SECTIONS_MENU_LOCATOR)
+                .waitVisibility(SECTION_ARROW_LOCATOR);
     }
 }

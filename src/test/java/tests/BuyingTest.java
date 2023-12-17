@@ -1,6 +1,6 @@
 package tests;
 
-import dto.ShippingDataDto;
+import dtos.ShippingDataDto;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
