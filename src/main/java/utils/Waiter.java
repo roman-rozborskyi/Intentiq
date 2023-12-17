@@ -11,7 +11,7 @@ import utils.drivermanager.DriverManager;
 import java.time.Duration;
 
 public class Waiter {
-    private static final int DEFAULT_WAIT_TIME = 20;
+    private static final int DEFAULT_WAIT_TIME = 30;
     private WebDriver webDriver;
 
     {

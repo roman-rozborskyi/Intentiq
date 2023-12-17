@@ -21,4 +21,22 @@ public class ShippingDataDirector {
                 .shippingMethod(ShippingMethods.FIVE)
                 .build();
     }
+
+    public ShippingDataDto getInstance(ShippingDataHttpRequest request) {
+
+        return ShippingDataDto
+                .builder()
+                .eMail(EmailGenerator.getEmail())
+                .firstName(NameGenerator.getFirstName())
+                .lastName(NameGenerator.getLastName())
+                .company(CompanyNameGenerator.getName())
+                .streetAddress(AddressGenerator.getStreet())
+                .city(AddressGenerator.getCity())
+                .region(AddressGenerator.getRegion())
+                .zip(AddressGenerator.getZip())
+                .country(Countries.UKRAINE)
+                .phoneNumber(PhoneNumberGenerator.getNumber())
+                .shippingMethod(ShippingMethods.FIVE)
+                .build();
+    }
 }

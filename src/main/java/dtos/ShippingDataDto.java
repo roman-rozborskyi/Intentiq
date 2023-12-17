@@ -4,10 +4,11 @@ import enums.Countries;
 import enums.ShippingMethods;
 import lombok.Builder;
 import lombok.Getter;
+import utils.drivermanager.CheckableInRequest;
 
 @Getter
 @Builder
-public class ShippingDataDto {
+public class ShippingDataDto implements CheckableInRequest {
     private String eMail;
     private String firstName;
     private String lastName;

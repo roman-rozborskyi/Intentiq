@@ -4,13 +4,10 @@ import dtos.ShippingDataDto;
 import enums.Countries;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.devtools.DevTools;
 import pageelements.LoadingMaskElement;
 import pageelements.dropdowns.DropdownRegular;
 import pageelements.inputs.InputRegular;
 import utils.Waiter;
-import utils.drivermanager.DevToolsService;
 import utils.drivermanager.DevToolsServiceChrome;
 
 public class ShippingPage extends PageObject {
@@ -99,30 +96,15 @@ public class ShippingPage extends PageObject {
     }
 
     public ShippingDataDto clickNextButton() {
+        DevToolsServiceChrome devToolsServiceChrome = new DevToolsServiceChrome();
+        devToolsServiceChrome.createSession();
+        devToolsServiceChrome.requestToObject();
+
         new Waiter().waitClickable(NEXT_BUTTON_LOCATOR);
         WebElement button = webDriver.findElement(NEXT_BUTTON_LOCATOR);
         button.click();
 
-
-        DevToolsService devToolsService = new DevToolsServiceChrome();
-        ChromeDriver driver = (ChromeDriver) webDriver;
-        DevTools devTools = driver.getDevTools();
-        devTools.createSession();
-//        devTools.addListener(Network);
-
-        return ShippingDataDto
-                .builder()
-                .eMail("")
-                .firstName("")
-                .lastName("")
-                .company("")
-                .streetAddress("")
-                .city("")
-                .region("")
-                .zip("")
-                .country(Countries.US)
-                .phoneNumber("")
-                .build();
+        return (ShippingDataDto) devToolsServiceChrome.requestToObject();
     }
 
     public ShippingPage waitPageReady() {
